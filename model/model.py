@@ -16,14 +16,18 @@ class Model:
     # --- ARTEFATTI ---
     def get_artefatti_filtrati(self, museo:str, epoca:str):
         """Restituisce la lista di tutti gli artefatti filtrati per museo e/o epoca (filtri opzionali)."""
-        # TODO
+        if museo=="Nessun filtro":
+            museo=None
+        if epoca=="Nessun filtro":
+            epoca=None
 
+        return self.ArtefattoDAO.get_artefatti_filtrati(museo, epoca)
     def get_epoche(self):
         """Restituisce la lista di tutte le epoche."""
-        # TODO
+        return self.ArtefattoDAO.get_all_epoche()
 
     # --- MUSEI ---
     def get_musei(self):
         """ Restituisce la lista di tutti i musei."""
-        # TODO
+        return self.MuseoDAO.trova_musei()
 

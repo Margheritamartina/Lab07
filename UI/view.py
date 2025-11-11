@@ -37,10 +37,20 @@ class View:
 
         # --- Sezione 2: Filtraggio ---
         # TODO
+        self._dd_musei=ft.Dropdown(labe='Musei',
+                                   options=[],#come opzioni vanno tutti i nomi dei musei del database
+                                   width=200,
+                                   hint_text="Seleziona un museo")
+        self._dd_epoca = ft.Dropdown(labe='Epoca',
+                                     options=[],
+                                     width=200,
+                                     hint_text="Seleziona un'epoca")
 
         # Sezione 3: Artefatti
-        # TODO
 
+        self.pulsante_mostra_artefatti=ft.ElevatedButton(text="Mostra Artefatti",on_click=self._on_click_mostra_artefatti)
+
+        self.lista_artefatti=ft.Column(spacing=10,scroll=ft.ScrollMode.AUTO)
         # --- Toggle Tema ---
         self.toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=self.cambia_tema)
 
@@ -53,10 +63,22 @@ class View:
             ft.Divider(),
 
             # Sezione 2: Filtraggio
-            # TODO
+            ft.Row(
+               [
+                   self.dd_musei,
+                   self._dd_epoca,
+                   self._pulsante_mostra_artefatti
+               ],
+               alignment=ft.MainAxisAlignment.CENTER,
+               spacing=20
+            ),
+
+            ft.Divider(),
 
             # Sezione 3: Artefatti
-            # TODO
+
+            ft.Text("Elenco Artefatti", size=24, weight=ft.FontWeight.BOLD),
+            self._lista_artefatti
         )
 
         self.page.scroll = "adaptive"
